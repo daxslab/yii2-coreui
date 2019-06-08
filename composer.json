@@ -8,6 +8,11 @@
     "yiisoft/yii2": "~2.0.0",
     "coreui/coreui": "2.1.11"
   },
+  "autoload": {
+    "psr-4": {
+      "daxslab\\coreui\\": ""
+     }
+  },
   "minimum-stability": "dev",
   "license": "MIT",
   "authors": [

@@ -10,15 +10,18 @@ use yii\web\AssetBundle;
  */
 class CoreUiAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/coreui/coreui/dist';
+    public $sourcePath = '@daxslab/coreui/assets';
     public $css = [
-        "css/coreui.min.css",
+        "vendors/simple-line-icons/css/simple-line-icons.css",
+        "vendors/font-awesome/css/font-awesome.min.css",
+        "vendors/pace-progress/css/pace.min.css",
+        "css/site.css",
     ];
     public $js = [
-        "js/coreui.min.js",
-        "js/coreui-utilities.min.js",
+        "vendors/pace-progress/js/pace.min.js",
+        "vendors/perfect-scrollbar/js/perfect-scrollbar.min.js",
     ];
     public $depends = [
-        BootstrapPluginAsset::class,
+        CoreUiAsset::class
     ];
 }
