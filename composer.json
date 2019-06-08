@@ -1,0 +1,19 @@
+{
+  "name": "daxslab/yii2-coreui",
+  "description": "CAS authentication for Yii2",
+  "type": "yii2-extension",
+  "keywords": ["yii", "yii2", "Coreui", "layout"],
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "~2.0.0",
+    "coreui/coreui": "2.1.11"
+  },
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Daxslab",
+      "email": "daxslab@daxslab.com"
+    }
+  ]
+}
