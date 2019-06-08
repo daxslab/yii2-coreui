@@ -8,7 +8,7 @@ use yii\web\AssetBundle;
 /**
  * Main backend application asset bundle.
  */
-class MainAsset extends AssetBundle
+class BaseAsset extends AssetBundle
 {
     public $sourcePath = '@vendor/coreui/coreui/dist';
     public $css = [

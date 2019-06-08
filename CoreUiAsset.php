@@ -2,7 +2,6 @@
 
 namespace daxslab\coreui;
 
-use yii\bootstrap4\BootstrapPluginAsset;
 use yii\web\AssetBundle;
 
 /**
@@ -22,6 +21,6 @@ class CoreUiAsset extends AssetBundle
         "vendors/perfect-scrollbar/js/perfect-scrollbar.min.js",
     ];
     public $depends = [
-        CoreUiAsset::class
+        BaseAsset::class
     ];
 }
