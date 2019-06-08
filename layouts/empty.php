@@ -12,7 +12,7 @@ $bodyClass = isset($this->params['showSidebar'])
             : "app header-fixed sidebar-fixed aside-menu-fixed"
         : "app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show";
 
-\daxslab\coreui\MainAsset::register($this);
+\daxslab\coreui\CoreUiAsset::register($this);
 
 ?>
 
