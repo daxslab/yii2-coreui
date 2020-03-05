@@ -82,3 +82,9 @@ div[data-action='modal-include-components'] > .modal-dialog > .modal-content > .
 .navbar{
     padding: 0 !important;
 }
+
+/*Fix brand icon in Chrome*/
+.navbar-brand-full{
+    height: auto;
+    width: inherit;
+}
