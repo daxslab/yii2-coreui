@@ -15,8 +15,7 @@ class BaseAsset extends AssetBundle
         "css/coreui.min.css",
     ];
     public $js = [
-        "js/coreui.min.js",
-        "js/coreui-utilities.min.js",
+        "js/coreui.bundle.min.js",
     ];
     public $depends = [
         BootstrapPluginAsset::class,

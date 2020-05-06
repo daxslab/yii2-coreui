@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 
 $this->params['top-menu'] = isset($this->params['top-menu']) ? $this->params['top-menu'] : [];
 $this->params['left-menu'] = isset($this->params['left-menu']) ? $this->params['left-menu'] : [];
+$this->params['user-menu'] = isset($this->params['user-menu']) ? $this->params['user-menu'] : [];
 
 $controller = $this->context->id;
 $action = $this->context->action->id;
@@ -57,25 +58,7 @@ if (isset($this->params['breadcrumbs']) && file_exists($helpFile)) {
         'encodeLabels' => false,
         'options' => ['class' => 'nav navbar-nav ml-auto'],
         'items' => array_merge($this->params['top-menu'], [
-            [
-                'visible' => !Yii::$app->user->isGuest,
-                'label' => Html::img(Yii::$app->thumbnailer->get(@Yii::$app->user->identity->profile->avatarUrl, 50, 50), [
-                    'class' => 'img-avatar',
-                    'alt' => @Yii::$app->user->identity->profile->name,
-                ]),
-                'items' => [
-                    [
-                        'label' => Yii::t('app', 'Change Password'),
-                        'url' => Yii::$app->params['rrhh'].'/default/user/change_password',
-                    ],
-                    [
-                        'label' => Yii::t('app', 'Logout'),
-                        'url' => ['//cas/auth/logout'],
-                        'linkOptions' => ['data-method' => 'post'],
-                    ]
-                ],
-                'dropdownOptions' => ['class' => 'dropdown-menu-right'],
-            ],
+            $this->params['user-menu'],
             [
                 'label' => Yii::t('app', 'Login'),
                 'url' => ['//cas/auth/login'],
