@@ -12,6 +12,10 @@ $this->params['top-menu'] = isset($this->params['top-menu']) ? $this->params['to
 $this->params['left-menu'] = isset($this->params['left-menu']) ? $this->params['left-menu'] : [];
 $this->params['user-menu'] = isset($this->params['user-menu']) ? $this->params['user-menu'] : [];
 
+$homeUrl = isset(Yii::$app->params['index-url']) ? Yii::$app->params['index-url'] : Yii::$app->homeUrl;
+$logoUrl = isset(Yii::$app->params['logo-url']) ? Yii::$app->params['logo-url'] : Yii::getAlias('@web/images/logo.png');
+$iconUrl = isset(Yii::$app->params['icon-url']) ? Yii::$app->params['icon-url'] : Yii::getAlias('@web/images/icon.png');
+
 $controller = $this->context->id;
 $action = $this->context->action->id;
 
@@ -45,9 +49,9 @@ if (isset($this->params['breadcrumbs']) && file_exists($helpFile)) {
     <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="<?= Yii::$app->params['index-url'] ?>">
-        <img class="navbar-brand-full" src="<?= Yii::$app->params['logo-url'] ?>" alt="<?= Yii::$app->name ?>">
-        <img class="navbar-brand-minimized" src="<?= Yii::$app->params['icon-url'] ?>" alt="<?= Yii::$app->name ?>">
+    <a class="navbar-brand" href="<?= $homeUrl ?>">
+        <img class="navbar-brand-full" src="<?= $logoUrl ?>" alt="<?= Yii::$app->name ?>">
+        <img class="navbar-brand-minimized" src="<?= $iconUrl ?>" alt="<?= Yii::$app->name ?>">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
@@ -57,14 +61,7 @@ if (isset($this->params['breadcrumbs']) && file_exists($helpFile)) {
         'id' => 'top-menu',
         'encodeLabels' => false,
         'options' => ['class' => 'nav navbar-nav ml-auto'],
-        'items' => array_merge($this->params['top-menu'], [
-            $this->params['user-menu'],
-            [
-                'label' => Yii::t('app', 'Login'),
-                'url' => ['//cas/auth/login'],
-                'visible' => Yii::$app->user->isGuest,
-            ]
-        ])
+        'items' => array_merge($this->params['top-menu'], $this->params['user-menu']),
     ]) ?>
 
 </header>
@@ -72,14 +69,11 @@ if (isset($this->params['breadcrumbs']) && file_exists($helpFile)) {
     <div class="sidebar">
         <nav class="sidebar-nav">
             <ul class="nav">
-
-                <?= \yii\widgets\Menu::widget([
-                    'items' => $this->params['left-menu'],
+                <?= \yii\widgets\Menu::widget(['items' => $this->params['left-menu'],
                     'encodeLabels' => false,
                     'options' => ['class' => 'nav'],
                     'linkTemplate' => '<a class="nav-link" href="{url}">{label}</a>',
                     'itemOptions' => ['class' => 'nav-item']]) ?>
-
             </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
