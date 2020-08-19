@@ -37,7 +37,7 @@ $bodyClass = isset($this->params['showSidebar'])
         };
     </script>
 </head>
-<body class="<?= $bodyClass ?>">
+<body class="c-app">
 
 <?php $this->beginBody() ?>
 
@@ -46,4 +46,4 @@ $bodyClass = isset($this->params['showSidebar'])
 <?php $this->endBody() ?>
 </body>
 </html>
-<?php $this->endPage() ?>
+<
