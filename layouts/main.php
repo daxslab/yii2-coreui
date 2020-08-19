@@ -45,63 +45,94 @@ if (isset($this->params['breadcrumbs']) && file_exists($helpFile)) {
 
 <?php $this->beginContent('@daxslab/coreui/layouts/empty.php') ?>
 
-<header class="app-header navbar">
-    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="<?= $homeUrl ?>">
-        <img class="navbar-brand-full" src="<?= $logoUrl ?>" alt="<?= Yii::$app->name ?>">
-        <img class="navbar-brand-minimized" src="<?= $iconUrl ?>" alt="<?= Yii::$app->name ?>">
-    </a>
-    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <?= \yii\bootstrap4\Nav::widget([
-        'id' => 'top-menu',
-        'encodeLabels' => false,
-        'options' => ['class' => 'nav navbar-nav ml-auto'],
-        'items' => array_merge($this->params['top-menu'], $this->params['user-menu']),
-    ]) ?>
-
-</header>
-<div class="app-body">
-    <div class="sidebar">
-        <nav class="sidebar-nav">
-            <ul class="nav">
-                <?= \yii\widgets\Menu::widget(['items' => $this->params['left-menu'],
-                    'encodeLabels' => false,
-                    'options' => ['class' => 'nav'],
-                    'linkTemplate' => '<a class="nav-link" href="{url}">{label}</a>',
-                    'itemOptions' => ['class' => 'nav-item']]) ?>
-            </ul>
-        </nav>
-        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="c-sidebar-brand d-md-down-none">
+        <img class="c-sidebar-brand-full" src="<?= $logoUrl ?>" alt="<?= Yii::$app->name ?>">
+        <img class="c-sidebar-brand-minimized" src="<?= $iconUrl ?>" alt="<?= Yii::$app->name ?>">
     </div>
-    <main class="main">
+    <ul class="nav">
+        <?= \yii\widgets\Menu::widget(['items' => $this->params['left-menu'],
+            'encodeLabels' => false,
+            'options' => ['class' => 'c-sidebar-nav'],
+            'linkTemplate' => '<a class="c-sidebar-nav-link" href="{url}">{label}</a>',
+            'itemOptions' => ['class' => 'c-sidebar-nav-item']]) ?>
+    </ul>
 
-        <?= Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            'itemTemplate' => "<li class='breadcrumb-item'>{link}</li>\n",
-            'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n",
-            'encodeLabels' => false,]) ?>
-
-        <div class="container-fluid">
-            <div class="animated fadeIn">
-                <?= $content ?>
-            </div>
-        </div>
-    </main>
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
+            data-class="c-sidebar-unfoldable"></button>
 </div>
-<footer class="app-footer">
-    <div>
-        <a href="<?= Yii::$app->request->hostInfo ?>"><?= Yii::$app->name ?></a>
-        <span>&copy; 2018 <?= Yii::t('app', 'All rights reserved') ?>.</span>
+
+<div class="c-wrapper">
+    <header class="c-header c-header-light c-header-fixed">
+        <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
+                data-class="c-sidebar-show">
+            <svg class="c-icon c-icon-lg">
+                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+            </svg>
+        </button>
+        <a class="c-header-brand d-lg-none c-header-brand-sm-up-center" href="#">
+            <svg width="118" height="46" alt="CoreUI Logo">
+                <use xlink:href="assets/brand/coreui-pro.svg#full"></use>
+            </svg>
+        </a>
+        <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
+                data-class="c-sidebar-lg-show" responsive="true">
+            <svg class="c-icon c-icon-lg">
+                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+            </svg>
+        </button>
+        <ul class="c-header-nav mfs-auto">
+            <li class="c-header-nav-item px-3 c-d-legacy-none">
+                <button class="c-class-toggler c-header-nav-btn" type="button" id="header-tooltip" data-target="body"
+                        data-class="c-dark-theme" data-toggle="c-tooltip" data-placement="bottom"
+                        title="Toggle Light/Dark Mode">
+                    <svg class="c-icon c-d-dark-none">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-moon"></use>
+                    </svg>
+                    <svg class="c-icon c-d-default-none">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-sun"></use>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+        <?= \yii\bootstrap4\Nav::widget([
+            'id' => 'top-menu',
+            'encodeLabels' => false,
+            'options' => ['class' => 'c-header-nav'],
+            'items' => array_merge($this->params['top-menu'], $this->params['user-menu']),
+        ]) ?>
+
+        <div class="c-subheader justify-content-between px-3">
+            <?= Breadcrumbs::widget([
+                'options' => ['class' => 'breadcrumb border-0 m-0 px-0 px-md-3'],
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'itemTemplate' => "<li class='breadcrumb-item'>{link}</li>\n",
+                'activeItemTemplate' => "<li class=\"breadcrumb-item active\">{link}</li>\n",
+                'encodeLabels' => false,
+            ])
+            ?>
+        </div>
+    </header>
+    <div class="c-body">
+        <main class="c-main">
+            <div class="container-fluid">
+                <div id="ui-view">
+                    <?= $content ?>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class="ml-auto">
-        <?= Yii::t('app', 'By {vendor} with {icon}', ['icon' => Html::tag('i', null, ['class' => 'fa fa-heart text-danger']),
-            'vendor' => Html::a('daxslab', 'http://daxslab.com', ['target' => '_blank'])]) ?>
-    </div>
-</footer>
+    <footer class="c-footer">
+        <div>
+            <a href="<?= Yii::$app->request->hostInfo ?>"><?= Yii::$app->name ?></a>
+            <span>&copy; 2018 <?= Yii::t('app', 'All rights reserved') ?>.</span>
+        </div>
+        <div class="mfs-auto">
+            <?= Yii::t('app', 'By {vendor} with {icon}', ['icon' => Html::tag('i', null, ['class' => 'fa fa-heart text-danger']),
+                'vendor' => Html::a('daxslab', 'http://daxslab.com', ['target' => '_blank'])]) ?>
+        </div>
+    </footer>
+</div>
 
 <?php $this->endContent() ?>
 
