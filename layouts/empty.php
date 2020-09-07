@@ -46,4 +46,4 @@ $bodyClass = isset($this->params['showSidebar'])
 <?php $this->endBody() ?>
 </body>
 </html>
-<
+<?php $this->endPage() ?>
