@@ -10,6 +10,10 @@ div.card footer.card-footer .pagination {
     display: inline-flex;
 }
 
+.card > .card-header {
+    margin-bottom: 0 !important;
+}
+
 .main .container-fluid {
     padding: 0 15px;
 }
@@ -67,24 +71,24 @@ div[data-action='modal-include-components'] > .modal-dialog > .modal-content > .
     color: red;
 }
 
-.img-fluid{
+.img-fluid {
     width: 100%;
 }
 
-.card-footer .pagination{
+.card-footer .pagination {
     margin-bottom: 0;
 }
 
-#top-menu > li{
+#top-menu > li {
     padding-right: 1em;
 }
 
-.navbar{
+.navbar {
     padding: 0 !important;
 }
 
 /*Fix brand icon in Chrome*/
-.navbar-brand-full{
-    height: auto;
-    width: inherit;
+.c-sidebar-brand-full,
+.c-sidebar-brand-minimized {
+    max-width: 100%;
 }

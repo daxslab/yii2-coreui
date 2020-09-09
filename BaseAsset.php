@@ -15,7 +15,7 @@ class BaseAsset extends AssetBundle
         "css/coreui.min.css",
     ];
     public $js = [
-        "js/coreui.min.js",
+        "js/coreui.bundle.min.js",
         "js/coreui-utilities.min.js",
     ];
     public $depends = [

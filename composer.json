@@ -4,8 +4,7 @@
   "type": "yii2-extension",
   "keywords": ["yii", "yii2", "Coreui", "layout"],
   "require": {
-    "yiisoft/yii2-bootstrap4": "*",
-    "coreui/coreui": "*"
+    "coreui/coreui": "~3.2.0"
   },
   "autoload": {
     "psr-4": {
@@ -17,7 +16,7 @@
   "authors": [
     {
       "name": "Daxslab",
-      "email": "daxslab@daxslab.com"
+      "email": "info@daxslab.com"
     }
   ]
 }
