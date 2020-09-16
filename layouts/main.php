@@ -13,6 +13,7 @@ $this->params['user-menu'] = isset($this->params['user-menu']) ? $this->params['
 
 $homeUrl = isset(Yii::$app->params['index-url']) ? Yii::$app->params['index-url'] : Yii::$app->homeUrl;
 $logoUrl = isset(Yii::$app->params['logo-url']) ? Yii::$app->params['logo-url'] : Yii::getAlias('@web/images/logo.png');
+$logoResponsiveUrl = isset(Yii::$app->params['logo-responsive-url']) ? Yii::$app->params['logo-responsive-url'] : Yii::getAlias('@web/images/logo-responsive.png');
 $iconUrl = isset(Yii::$app->params['icon-url']) ? Yii::$app->params['icon-url'] : Yii::getAlias('@web/images/icon.png');
 
 $controller = $this->context->id;
@@ -66,20 +67,16 @@ if (isset($this->params['breadcrumbs']) && file_exists($helpFile)) {
 </div>
 <div class="c-wrapper c-fixed-components">
     <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
-        <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
-                data-class="c-sidebar-lg-show" responsive="true">
+        <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
+                data-class="c-sidebar-show">
             <i class="c-icon c-icon-lg icon-menu"></i>
         </button>
         <a class="c-header-brand d-lg-none" href="<?= $homeUrl ?>">
-            <svg width="118" height="46" alt="CoreUI Logo">
-                <use xlink:href="assets/brand/coreui.svg#full"></use>
-            </svg>
+            <img src="<?= $logoResponsiveUrl ?>" alt="<?= Yii::$app->name ?>">
         </a>
         <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
                 data-class="c-sidebar-lg-show" responsive="true">
-            <svg class="c-icon c-icon-lg">
-                <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-menu"></use>
-            </svg>
+            <i class="c-icon c-icon-lg icon-menu"></i>
         </button>
         <?= \yii\bootstrap4\Nav::widget([
             'id' => 'top-menu',
